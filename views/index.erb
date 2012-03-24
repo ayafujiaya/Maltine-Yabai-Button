@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <% require 'app' %>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta name="viewport" content="width=100, initial-scale=1.0, maximum-scale=1.0, user-scalable=no "/>
+        <title>sample1</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<script type="text/javascript">
+	  $(window).bind('load',function(){ //←windowオブジェクトにloadイベントをバインド
+	  setTimeout(function(){
+	  window.scrollTo(0,1);　//←windowオブジェクトを1ピクセルスクロール
+	  　},1);
+	  });
+	  
+	  function maltine_button() {
+	  var data = 1;
+	  var data2 = "'<#= Post.all.length #>'"
+	  $.ajax({
+	  type: "POST",
+	  url: "/",
+	  data: data,
+	  success: function() {}
+	  });
+	  }
+        </script>
+	
+	<style TYPE="text/css">
+	  <!--
+	      body { 
+	      width : 300px;
+	      height : 600px;
+	      }
+	      #button {
+	      background-image : url(maltine_button.png);
+	      width : 300px;
+	      height : 267px;
+	      float : left;
+	      
+	      }
+	      #per_minute {
+	      width : 200px;
+	      float : left;
+	      }
+
+	      #reload {
+	      width : 99px;
+	      float : right;
+}
+	      
+	      #button:active {
+	      background-image : url(maltine_button_2.png);
+	      
+	      }
+}
+	      
+	    -->
+	</style>
+    </head>
+    <body>
+      <div id="wrap">
+<!--	<form action="/reset" method="GET">
+
+	  <input type="submit" value="リセットだよ☆" />
+	</form> -->
+	<div id="button" onClick="maltine_button()"> 
+	</div>
+	<div id="per_minute" >
+	  <h1>  <%= $hoge.getPer_minute %> ヤバ/ m </h1>
+	  <h1>  <%= $hoge.getPer_hour %> ヤバ/ h </h1>
+	</div>
+	<div id="reload">
+	  <form action="/reload" method="GET" >
+	  <input type="submit" value="ヤバさ確認☆" width="100px" height="100px"/>
+	  </form>
+	</div>
+      
+      </div>
+	 <!-- <%= Post.all.map{ |r| "#{r.id}回。#{r.create_at.day}日　#{r.create_at.hour}時 #{r.create_at.min}分 #{r.create_at.sec}秒 <br />"} %> -->
+      </div>
+    仮ボタンデザイン:ヤバ男
+    </body>
+</html>
